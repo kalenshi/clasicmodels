@@ -19,7 +19,7 @@ class Products(models.Model):
 
     def __str__(self):
         """
-        Human-readable representation of the employees model
+        Human-readable representation of the products model
 
         Returns:
             str : the model in a readable string

@@ -12,7 +12,7 @@ class Productlines(models.Model):
 
     def __str__(self):
         """
-        Human-readable representation of the employees model
+        Human-readable representation of the Productlines model
 
         Returns:
             str : the model in a readable string

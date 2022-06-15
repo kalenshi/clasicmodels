@@ -4,3 +4,4 @@
 coverage*
 .coverage
 venv
+.pytest_cache/
