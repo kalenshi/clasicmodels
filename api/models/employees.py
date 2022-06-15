@@ -22,3 +22,12 @@ class Employees(models.Model):
 
     class Meta:
         db_table = "employees"
+
+    def __str__(self):
+        """
+        Human-readable representation of the employees model
+
+        Returns:
+            str : the model in a readable string
+        """
+        return f"Employee-{self.employeenumber}"

@@ -16,3 +16,12 @@ class Products(models.Model):
 
     class Meta:
         db_table = "products"
+
+    def __str__(self):
+        """
+        Human-readable representation of the employees model
+
+        Returns:
+            str : the model in a readable string
+        """
+        return f"Product-{self.productcode}"

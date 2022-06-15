@@ -14,3 +14,12 @@ class Orders(models.Model):
 
     class Meta:
         db_table = "orders"
+
+    def __str__(self):
+        """
+        Human-readable representation of the employees model
+
+        Returns:
+            str : the model in a readable string
+        """
+        return f"Order-{self.ordernumber}"

@@ -9,3 +9,12 @@ class Productlines(models.Model):
 
     class Meta:
         db_table = "productlines"
+
+    def __str__(self):
+        """
+        Human-readable representation of the employees model
+
+        Returns:
+            str : the model in a readable string
+        """
+        return f"ProductLine-{self.productline}"
