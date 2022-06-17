@@ -9,22 +9,28 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
+import json
 from pathlib import Path
+
+config = {}
 
 # Build paths inside the project like this: BASE_DIR / "subdir".
 BASE_DIR = Path(__file__).resolve().parent.parent
+CONFIG_PATH = os.path.join(BASE_DIR, "api", "config")
+
+with open(os.path.join(CONFIG_PATH, "config.local.json"), "r") as fh:
+    config = json.load(fh)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-1+ii#y@4bahu)p03o)t!#ur!gsi&-00#lle0td3zh9#7b_e(1$"
-
+SECRET_KEY = os.environ.get("SECRET_KEY", config.get("SECRET_KEY"))
 # SECURITY WARNING: don"t run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config.get("ALLOWED_HOSTS")
 
 # Application definition
 
@@ -74,14 +80,7 @@ WSGI_APPLICATION = "classicmodels.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "classicmodels",
-        "USER": "root",
-        "PASSWORD": "BB_ros375_"
-    }
-}
+DATABASES = config.get("DATABASES")
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -121,3 +120,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination"
+}

@@ -1,0 +1,15 @@
+{
+  "SECRET_KEY": "72ab4d0a85cc456d676e162072bbf1d3bd32390ce0bb7de40897c78ccb4a105d8d803b40cadb4cc9",
+  "ALLOWED_HOSTS": [
+    "*"
+  ],
+  "DATABASES": {
+    "default": {
+      "ENGINE": "django.db.backends.mysql",
+      "HOST": "classicmodels.cq7ghw4hp0ge.ca-central-1.rds.amazonaws.com",
+      "NAME": "classicmodels",
+      "USER": "api_user",
+      "PASSWORD": "AC_*D_tz:%$-2KZy"
+    }
+  }
+}
