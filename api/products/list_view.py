@@ -30,6 +30,22 @@ class ProductsListView(APIView):
                 description="Product code",
                 require=False
             ),
+            openapi.Parameter(
+                name="limit",
+                in_=openapi.IN_QUERY,
+                type=openapi.TYPE_INTEGER,
+                description="Limit results returned",
+                default=10,
+                require=False
+            ),
+            openapi.Parameter(
+                name="offset",
+                in_=openapi.IN_QUERY,
+                type=openapi.TYPE_INTEGER,
+                description="Starting point of object retrieval",
+                default=0,
+                require=False
+            ),
         ]
     )
     def get(self, request, format=None):
