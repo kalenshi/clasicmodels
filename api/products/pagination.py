@@ -8,8 +8,6 @@ class ProductPagination(LimitOffsetPagination):
     """
     limit_query_param = "limit"
     offset_query_param = "offset"
-    limit = 1
-    offset = 0
 
     def get_paginated_response(self, data):
         """
