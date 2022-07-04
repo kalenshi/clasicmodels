@@ -11,6 +11,8 @@ from api.products.list_view import ProductsListView
 from api.supervisor.detail_view import SupervisorsDetailView
 from api.supervisor.list_view import SupervisorsListView
 
+app_name = "api"
+
 urlpatterns = [
     path("customers/", CustomersListView.as_view(), name="customers"),
     path("customers/<cust_id>", CustomersDetailView.as_view(), name="customer_detail"),

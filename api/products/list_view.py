@@ -52,8 +52,16 @@ class ProductsListView(APIView):
         """
         Retrieve a list of products from the database
         """
+
+        filters = {
+            "productcode": request.GET.get("productcode"),
+            "productname": request.GET.get("productname"),
+        }
+
+        # Drop none values in filters
+        filters = {k: v for k, v in filters.items() if v is not None}
         pagination = self.pagination_class()
-        products = Products.objects.all()
+        products = Products.objects.filter(**filters)
 
         results = pagination.paginate_queryset(queryset=products, request=request)
         serializer = self.serializer_class(results, many=True)

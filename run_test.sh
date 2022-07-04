@@ -2,7 +2,7 @@
 
 result=0
 coverage erase
-pytest --cov-report term-missing --cov=api/
+coverage run manage.py test tests
 
 if [[ $? -ne 0 ]]; then
   result=1

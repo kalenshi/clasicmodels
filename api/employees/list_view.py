@@ -97,7 +97,7 @@ class EmployeesListView(APIView):
         paginator = self.pagination_class()
         employees = Employees.objects.select_related(
             "officecode", "reportsto"
-        ).filter(**filters).all().order_by("employeenumber")
+        ).filter(**filters).order_by("employeenumber")
 
         result = paginator.paginate_queryset(employees, request)
 
@@ -105,6 +105,21 @@ class EmployeesListView(APIView):
 
         return paginator.get_paginated_response(data=serializer.data)
 
+    @swagger_auto_schema(
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                "firstname": openapi.Schema(type=openapi.TYPE_STRING),
+                "lastname": openapi.Schema(type=openapi.TYPE_STRING),
+                "extension": openapi.Schema(type=openapi.TYPE_STRING),
+                "email": openapi.Schema(type=openapi.TYPE_STRING),
+                "officecode": openapi.Schema(type=openapi.TYPE_INTEGER),
+                "reportsto": openapi.Schema(type=openapi.TYPE_INTEGER),
+            },
+            required=["firstname", "lastname", "extension", "email", "officecode", "reportsto"]
+        )
+
+    )
     def post(self, request, format=None):
         """
         Creates a new Employee in the database and returns it

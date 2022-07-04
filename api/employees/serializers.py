@@ -1,15 +1,14 @@
 from rest_framework import serializers
 
-from api.models import Employees
+from api.models import Employees, Offices
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
     """
     Serializer class for the Employees model
     """
-    officecode = serializers.SlugRelatedField(slug_field="postalcode", read_only=True)
-    reportsto = serializers.SlugRelatedField(slug_field="jobtitle", read_only=True)
-    manages = serializers.SlugRelatedField(many=True, read_only=True, slug_field="firstname")
+    officecode = serializers.PrimaryKeyRelatedField(queryset=Offices.objects.all())
+    reportsto = serializers.PrimaryKeyRelatedField(queryset=Employees.objects.all())
 
     class Meta:
         model = Employees
