@@ -12,7 +12,7 @@ class TestProductModel(APITestCase):
         """
         Create a product instance
         """
-        self.product = ProductsFactory(productcode="XX-10")
+        self.product = ProductsFactory()
 
     def test_string_representation(self):
-        self.assertEqual(self.product.__str__(), "Product-XX-10")
+        self.assertEqual(self.product.__str__(), "Product-XX-0")

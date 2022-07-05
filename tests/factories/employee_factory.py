@@ -20,7 +20,7 @@ class EmployeeFactory(factory.django.DjangoModelFactory):
     Factory for creating employee models for testing
     """
 
-    employeenumber = factory.sequence(lambda n: f"100{n}")
+    employeenumber = factory.sequence(lambda n: n)
     officecode = factory.SubFactory(OfficesFactory)
     jobtitle = faker.random_element(elements=titles)
 

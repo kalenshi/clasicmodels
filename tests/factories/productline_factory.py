@@ -7,4 +7,4 @@ class ProductLinesFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Productlines
 
-    productline = factory.sequence(lambda n: n)
+    productline = factory.sequence(lambda n: f"XXXX-{n}")

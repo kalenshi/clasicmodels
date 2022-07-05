@@ -13,8 +13,8 @@ class ProductsFactory(factory.django.DjangoModelFactory):
     """
     productname = faker.pystr()
     productline = factory.SubFactory(ProductLinesFactory)
-    msrp = faker.pydecimal(right_digits=2, positive=True, min_value=2, max_value=100)
-    buyprice = faker.pyfloat(positive=True)
+    msrp = 300.99
+    buyprice = 200.239
     quantityinstock = faker.pyint()
     productcode = factory.sequence(lambda n: f"XX-{n}")
 

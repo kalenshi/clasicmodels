@@ -15,4 +15,4 @@ class TestProductLinesModel(APITestCase):
         self.productline = ProductLinesFactory()
 
     def test_string_representation(self):
-        self.assertEqual(self.productline.__str__(), "ProductLine-1")
+        self.assertEqual(self.productline.__str__(), "ProductLine-XXXX-1")

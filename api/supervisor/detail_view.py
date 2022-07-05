@@ -1,3 +1,4 @@
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -23,7 +24,7 @@ class SupervisorsDetailView(APIView):
         """
         try:
             return Employees.objects.prefetch_related("manages").get(pk=pk)
-        except Employees.DoesNotExist:
+        except ObjectDoesNotExist:
             raise Exception(f"Employee with employeenumber {pk} Does not exist!")
 
     def get(self, request, emp_no, format=None):
